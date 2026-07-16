@@ -1,0 +1,25 @@
+{
+  "capital_inicial": 10000.0,
+  "capital_actual": 9497.44,
+  "posiciones": {
+    "NVDA": {
+      "qty": 3.0,
+      "avg_price": 167.52
+    }
+  },
+  "trades": [
+    {
+      "date": "2026-03-30",
+      "ticker": "NVDA",
+      "action": "BUY",
+      "price_usd": 167.52,
+      "qty": 3,
+      "score": -0.385,
+      "confidence": 0.57,
+      "capital_before": 10000.0,
+      "capital_after": 9497.44,
+      "pnl": null
+    }
+  ],
+  "last_updated": "2026-03-30"
+}

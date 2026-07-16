@@ -1,0 +1,13 @@
+[Unit]
+Description=X virtual framebuffer — display :99 para servicios headless
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/Xvfb :99 -screen 0 1280x1024x24 -nolisten tcp
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

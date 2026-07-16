@@ -1,0 +1,18 @@
+# Sudoers para AI Trading Lab
+# Permite al usuario david gestionar los servicios del sistema de trading
+# sin password. Solo los comandos exactos necesarios.
+#
+# Aplicar con:
+#   sudo visudo -c -f config/sudoers-trading && sudo cp config/sudoers-trading /etc/sudoers.d/trading
+#   sudo chmod 440 /etc/sudoers.d/trading
+
+david ALL=(ALL) NOPASSWD: /bin/systemctl start ibgateway.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl stop ibgateway.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl restart ibgateway.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl start xvfb.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl stop xvfb.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl restart xvfb.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl start trading-scheduler.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl stop trading-scheduler.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl restart trading-scheduler.service
+david ALL=(ALL) NOPASSWD: /bin/systemctl daemon-reload

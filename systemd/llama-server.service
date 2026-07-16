@@ -1,0 +1,33 @@
+[Unit]
+Description=llama.cpp-tq3 inference server (Qwen3.6-35B-A3B TurboQuant)
+After=network.target
+Before=trading-scheduler.service
+
+[Service]
+Type=simple
+
+ExecStart=/home/david/code/llama.cpp-tq3/build/bin/llama-server \
+    -m /home/david/models/qwen3.6-35b/Qwen3.6-35B-A3B-TQ3_4S.gguf \
+    --host 127.0.0.1 \
+    --port 8080 \
+    -ngl 41 \
+    -ncmoe 32 \
+    -b 512 -ub 512 \
+    -t 12 \
+    -fa 1 \
+    -ctk q4_0 -ctv tq3_0 \
+    -c 262144 \
+    --jinja \
+    --reasoning auto \
+    --reasoning-format deepseek \
+    --log-disable
+
+Environment=CUDA_VISIBLE_DEVICES=0
+
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,471 @@
+{
+  "date": "2026-04-14",
+  "regime_adjustment": 0.8,
+  "effective_threshold": 0.56,
+  "tickers_analyzed": 21,
+  "errors": [],
+  "summary": {
+    "BUY": [
+      "AMD",
+      "MRVL",
+      "VRT",
+      "WOLF"
+    ],
+    "SELL": [
+      "ASML",
+      "CEG",
+      "VEEV",
+      "CRM"
+    ],
+    "HOLD": [
+      "AVGO",
+      "TSM",
+      "ANET",
+      "META",
+      "ORCL",
+      "NEE",
+      "ISRG",
+      "CRWV",
+      "COHR",
+      "MU",
+      "RXRX",
+      "CRSP",
+      "BEAM"
+    ]
+  },
+  "signals": [
+    {
+      "date": "2026-04-14",
+      "ticker": "AMD",
+      "signal": "BUY",
+      "rsi": 73.84,
+      "price": 246.83,
+      "sentiment": 0.311,
+      "sentiment_headlines": 10,
+      "critic_verdict": "APPROVED",
+      "critic_override": false,
+      "decision": "BUY",
+      "score": 0.852,
+      "confidence": 0.852,
+      "trade": {
+        "status": "filled",
+        "trade": {
+          "action": "BUY",
+          "ticker": "AMD",
+          "price": 246.8300018310547,
+          "quantity": 1,
+          "cost": 246.83,
+          "date": "2026-04-14"
+        }
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "AVGO",
+      "signal": "SELL",
+      "rsi": 74.52,
+      "price": 379.75,
+      "sentiment": 0.2936,
+      "sentiment_headlines": 10,
+      "critic_verdict": "APPROVED",
+      "critic_override": false,
+      "decision": "HOLD",
+      "score": -0.402,
+      "confidence": 0.402,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "ASML",
+      "signal": "SELL",
+      "rsi": 62.25,
+      "price": 1500.2,
+      "sentiment": -0.1443,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "SELL",
+      "score": -0.749,
+      "confidence": 0.749,
+      "trade": {
+        "status": "skipped",
+        "reason": "No position to sell"
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "TSM",
+      "signal": "SELL",
+      "rsi": 65.16,
+      "price": 369.57,
+      "sentiment": 0.108,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": -0.464,
+      "confidence": 0.464,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "MRVL",
+      "signal": "BUY",
+      "rsi": 82.84,
+      "price": 131.3,
+      "sentiment": 0.1602,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "BUY",
+      "score": 0.725,
+      "confidence": 0.725,
+      "trade": {
+        "status": "filled",
+        "trade": {
+          "action": "BUY",
+          "ticker": "MRVL",
+          "price": 131.3000030517578,
+          "quantity": 1,
+          "cost": 131.3,
+          "date": "2026-04-14"
+        }
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "ANET",
+      "signal": "SELL",
+      "rsi": 62.43,
+      "price": 152.02,
+      "sentiment": -0.0628,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": -0.633,
+      "confidence": 0.633,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "VRT",
+      "signal": "BUY",
+      "rsi": 66.53,
+      "price": 299.96,
+      "sentiment": 0.2833,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "BUY",
+      "score": 0.836,
+      "confidence": 0.836,
+      "trade": {
+        "status": "filled",
+        "trade": {
+          "action": "BUY",
+          "ticker": "VRT",
+          "price": 299.9599914550781,
+          "quantity": 1,
+          "cost": 299.96,
+          "date": "2026-04-14"
+        }
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "CEG",
+      "signal": "SELL",
+      "rsi": 51.1,
+      "price": 291.72,
+      "sentiment": -0.1109,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "SELL",
+      "score": -0.706,
+      "confidence": 0.706,
+      "trade": {
+        "status": "skipped",
+        "reason": "No position to sell"
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "META",
+      "signal": "SELL",
+      "rsi": 57.49,
+      "price": 634.53,
+      "sentiment": 0.0936,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": -0.476,
+      "confidence": 0.476,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "ORCL",
+      "signal": "SELL",
+      "rsi": 51.7,
+      "price": 155.62,
+      "sentiment": 0.3029,
+      "sentiment_headlines": 10,
+      "critic_verdict": "APPROVED",
+      "critic_override": false,
+      "decision": "HOLD",
+      "score": -0.371,
+      "confidence": 0.371,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "VEEV",
+      "signal": "SELL",
+      "rsi": 24.1,
+      "price": 158.45,
+      "sentiment": -0.1269,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "SELL",
+      "score": -0.718,
+      "confidence": 0.718,
+      "trade": {
+        "status": "skipped",
+        "reason": "No position to sell"
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "NEE",
+      "signal": "BUY",
+      "rsi": 62.55,
+      "price": 92.3,
+      "sentiment": 0.0027,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": 0.648,
+      "confidence": 0.648,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "ISRG",
+      "signal": "SELL",
+      "rsi": 38.04,
+      "price": 458.96,
+      "sentiment": 0.0483,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": -0.542,
+      "confidence": 0.542,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "CRWV",
+      "signal": "SELL",
+      "rsi": 70.89,
+      "price": 110.27,
+      "sentiment": 0.1116,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": -0.484,
+      "confidence": 0.484,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "COHR",
+      "signal": "BUY",
+      "rsi": 65.69,
+      "price": 307.93,
+      "sentiment": 0.0074,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": 0.635,
+      "confidence": 0.635,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "MU",
+      "signal": "SELL",
+      "rsi": 55.71,
+      "price": 426.56,
+      "sentiment": 0.1714,
+      "sentiment_headlines": 10,
+      "critic_verdict": "APPROVED",
+      "critic_override": false,
+      "decision": "HOLD",
+      "score": -0.434,
+      "confidence": 0.434,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "CRM",
+      "signal": "SELL",
+      "rsi": 32.22,
+      "price": 172.82,
+      "sentiment": -0.1077,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "SELL",
+      "score": -0.686,
+      "confidence": 0.686,
+      "trade": {
+        "status": "skipped",
+        "reason": "No position to sell"
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "RXRX",
+      "signal": "SELL",
+      "rsi": 57.85,
+      "price": 3.42,
+      "sentiment": 0.016,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": -0.593,
+      "confidence": 0.593,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "CRSP",
+      "signal": "SELL",
+      "rsi": 73.29,
+      "price": 54.83,
+      "sentiment": 0.0552,
+      "sentiment_headlines": 10,
+      "critic_verdict": "CHALLENGED",
+      "critic_override": true,
+      "decision": "HOLD",
+      "score": -0.532,
+      "confidence": 0.532,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "BEAM",
+      "signal": "SELL",
+      "rsi": 68.68,
+      "price": 30.18,
+      "sentiment": 0.3005,
+      "sentiment_headlines": 10,
+      "critic_verdict": "APPROVED",
+      "critic_override": false,
+      "decision": "HOLD",
+      "score": -0.301,
+      "confidence": 0.301,
+      "trade": null
+    },
+    {
+      "date": "2026-04-14",
+      "ticker": "WOLF",
+      "signal": "BUY",
+      "rsi": 71.73,
+      "price": 24.15,
+      "sentiment": 0.2897,
+      "sentiment_headlines": 10,
+      "critic_verdict": "APPROVED",
+      "critic_override": false,
+      "decision": "BUY",
+      "score": 0.863,
+      "confidence": 0.863,
+      "trade": {
+        "status": "filled",
+        "trade": {
+          "action": "BUY",
+          "ticker": "WOLF",
+          "price": 24.149999618530277,
+          "quantity": 4,
+          "cost": 96.6,
+          "date": "2026-04-14"
+        }
+      }
+    }
+  ],
+  "portfolio_snapshot": {
+    "cash": 6110.77,
+    "positions": {
+      "MRVL": {
+        "quantity": 4,
+        "avg_price": 122.275,
+        "current_price": 131.3,
+        "market_value": 525.2,
+        "pnl": 36.1,
+        "pnl_pct": 7.38
+      },
+      "VRT": {
+        "quantity": 4,
+        "avg_price": 286.2525,
+        "current_price": 299.96,
+        "market_value": 1199.84,
+        "pnl": 54.83,
+        "pnl_pct": 4.79
+      },
+      "NEE": {
+        "quantity": 4,
+        "avg_price": 94.1,
+        "current_price": 92.3,
+        "market_value": 369.2,
+        "pnl": -7.2,
+        "pnl_pct": -1.91
+      },
+      "COHR": {
+        "quantity": 4,
+        "avg_price": 282.14,
+        "current_price": 307.93,
+        "market_value": 1231.72,
+        "pnl": 103.16,
+        "pnl_pct": 9.14
+      },
+      "MU": {
+        "quantity": 1,
+        "avg_price": 406.73,
+        "current_price": 426.56,
+        "market_value": 426.56,
+        "pnl": 19.83,
+        "pnl_pct": 4.88
+      },
+      "AMD": {
+        "quantity": 1,
+        "avg_price": 246.83,
+        "current_price": 246.83,
+        "market_value": 246.83,
+        "pnl": 0.0,
+        "pnl_pct": 0.0
+      },
+      "WOLF": {
+        "quantity": 4,
+        "avg_price": 24.15,
+        "current_price": 24.15,
+        "market_value": 96.6,
+        "pnl": 0.0,
+        "pnl_pct": 0.0
+      }
+    },
+    "total_value": 10206.72,
+    "pnl_total": 206.72,
+    "pnl_total_pct": 2.07,
+    "total_trades": 19,
+    "last_updated": "2026-04-14"
+  }
+}

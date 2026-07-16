@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  wol-scheduler:
+    build:
+      context: ../..
+      dockerfile: docker/ds220/Dockerfile
+    container_name: trading-wol-scheduler
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=Europe/Madrid
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

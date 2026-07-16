@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Entorno virtual
+.venv/
+
+# Datos descargados (se regeneran con yfinance)
+data/raw/
+data/cache/
+data/processed/
+data/data/
+
+# Históricos CSV por ticker (se regeneran con yfinance/enrich_rag_outcomes.py)
+data/history/
+
+# ChromaDB — base de datos binaria, se regenera con populate_rag.py
+data/chromadb/
+
+# DuckDB — base de datos local, no versionar binario
+data/ledger.duckdb
+
+# Estado local IBKR (order IDs, no sensible pero local)
+data/ibkr_local_state.json
+
+# Logs históricos por fecha (voluminosos, se acumulan)
+logs/daily_signals_2*.json
+logs/daily_reports/
+logs/intraday_context/
+logs/calibration/
+
+# Configuración local sensible
+config.local.yaml
+.env
+.envrc
+
+# Herramientas de IA
+.claude/

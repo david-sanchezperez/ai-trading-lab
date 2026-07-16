@@ -1,0 +1,17 @@
+[Unit]
+Description=AI Trading Lab — Telegram Bot
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/david/code/ai-trading-lab
+EnvironmentFile=/home/david/code/ai-trading-lab/.env
+ExecStart=/home/david/code/ai-trading-lab/.venv/bin/python -m app.telegram_bot
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

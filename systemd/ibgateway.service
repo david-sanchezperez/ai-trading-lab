@@ -1,0 +1,22 @@
+[Unit]
+Description=IB Gateway (paper) via IBC
+After=network.target xvfb.service
+Requires=xvfb.service
+# Sin límite de tasa: permite reintentos ilimitados durante la ventana de
+# mantenimiento de IBKR (~23:45 CET) sin que systemd deje de reiniciar.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=david
+# Xvfb :99 — display virtual independiente del login del usuario
+Environment=DISPLAY=:99
+ExecStart=/home/david/start_gateway.sh
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ibgateway
+
+[Install]
+WantedBy=multi-user.target
