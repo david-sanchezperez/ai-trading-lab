@@ -190,8 +190,29 @@ def _run_ibkr() -> dict:
         date_str = today.isoformat()
 
         all_positions = broker.get_positions()
-        # Filtrar posiciones negativas (short involuntario por bug de bracket) y qty=0
+        # Filtrar posiciones negativas (short involuntario por bug de bracket) y qty=0.
+        # No llevan stop-loss propio (la lógica de esta función asume largos) — se
+        # cierran automáticamente en execution_node cuando llega una señal BUY
+        # (cover-first, ver graph/trading_graph.py._execute_ibkr).
+        shorts = {t: p for t, p in all_positions.items() if p.get("quantity", 0) < 0}
         positions = {t: p for t, p in all_positions.items() if p.get("quantity", 0) > 0}
+
+        if shorts:
+            log.warning(
+                f"[trailing_stop] {len(shorts)} posiciones cortas sin stop-loss activo: "
+                + ", ".join(f"{t} ({p['quantity']})" for t, p in shorts.items())
+            )
+            try:
+                lines = "\n".join(f"• {t}: {p['quantity']} @ ${p['avg_price']:.2f}" for t, p in shorts.items())
+                send_notification(
+                    "⚠️ *Posiciones cortas sin gestión de stop*\n\n"
+                    f"{lines}\n\n"
+                    "Se cerrarán solas cuando llegue una señal BUY (cover-first). "
+                    "Sin stop-loss propio mientras tanto."
+                )
+            except Exception:
+                pass
+
         if not positions:
             log.info("[trailing_stop] Sin posiciones long IBKR — nada que revisar")
             return {"stops_triggered": [], "tps_triggered": []}

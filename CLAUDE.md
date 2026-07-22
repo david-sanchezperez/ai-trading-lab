@@ -65,7 +65,7 @@ Aprendizaje de tecnología cutting-edge, no maximizar PnL inmediato.
 - `analytics/portfolio_risk.py` — correlación 60d, beta ponderada, HHI, beta cap
 
 ### Scheduler y notificaciones
-- `scheduler/market_scheduler.py` — 5 jobs: pre_market(13h), daily_run(20:30h), trailing_stop(21:15h), outcome_resolution(21:30h), calibration_report(dom 10h)
+- `scheduler/market_scheduler.py` — 5 jobs: pre_market(13h), daily_run(20:30h), trailing_stop(21:15h), outcome_resolution(21:30h), calibration_report(vie 21:45h)
 - `scheduler/jobs/pre_market.py` — descarga + RAG + win_rates
 - `scheduler/jobs/daily_run.py` — pipeline completo + report JSON + Telegram
 - `scheduler/jobs/trailing_stop.py` — stops dinámicos + TP1/TP2

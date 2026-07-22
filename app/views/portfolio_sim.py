@@ -122,7 +122,9 @@ def render():
                 mkt_value = round(qty * cur_price, 2)
                 cost      = round(qty * avg_price, 2)
                 pnl       = round(mkt_value - cost, 2)
-                pnl_pct   = round(pnl / cost * 100, 2) if cost else 0.0
+                # abs(cost): en posiciones cortas 'cost' es negativo, y dividir
+                # sin abs() invierte el signo del % (una ganancia se vería como pérdida)
+                pnl_pct   = round(pnl / abs(cost) * 100, 2) if cost else 0.0
                 rows.append({
                     "Ticker":        ticker,
                     "Qty":           qty,

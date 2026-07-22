@@ -20,6 +20,7 @@ data/history/
 
 # ChromaDB — base de datos binaria, se regenera con populate_rag.py
 data/chromadb/
+data/chromadb_backup_*/
 
 # DuckDB — base de datos local, no versionar binario
 data/ledger.duckdb
@@ -27,11 +28,24 @@ data/ledger.duckdb
 # Estado local IBKR (order IDs, no sensible pero local)
 data/ibkr_local_state.json
 
+# Estado operativo local (paper sim, entry tracking, slippage) — se regenera
+data/entry_points.json
+data/portfolio_sim.json
+data/slippage_log.csv
+
+# Cache de outcomes del audit trail (audit.measure_critic) — se regenera
+data/audit_outcomes.json
+
 # Logs históricos por fecha (voluminosos, se acumulan)
 logs/daily_signals_2*.json
+logs/daily_signals.json
 logs/daily_reports/
 logs/intraday_context/
 logs/calibration/
+logs/decision_audit/
+logs/pnl_history.json
+logs/pnl_history_portfolio_sim.json
+logs/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
 
 # Configuración local sensible
 config.local.yaml

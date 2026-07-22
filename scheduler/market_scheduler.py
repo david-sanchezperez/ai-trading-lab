@@ -38,7 +38,7 @@ def _resolve_outcomes():
 
 
 def _weekly_calibration():
-    """Reporte semanal de calibración (domingos 10:00 CET)."""
+    """Reporte semanal de calibración (viernes 21:45 CET)."""
     try:
         from analytics.prediction_ledger import CalibrationEngine
         from core.config import LOGS_DIR
@@ -219,9 +219,16 @@ def build_scheduler() -> BlockingScheduler:
 
     scheduler.add_job(
         _weekly_calibration,
-        trigger=CronTrigger(day_of_week="sun", hour=10, minute=0, timezone=TIMEZONE),
+        # 10:00 CET domingo nunca disparaba: el proceso solo está vivo entre
+        # ~12:50 y la madrugada siguiente (ver systemd journal). Domingo tampoco
+        # sirve como sustituto: no hay garantía de que el equipo esté encendido
+        # (mercado cerrado, sin motivo para que esté arriba). Viernes 21:45 CET
+        # cae en la misma ventana horaria que outcome_resolution (21:30) y
+        # daily_run (20:30) — jobs que sí disparan de forma fiable cada día de
+        # mercado — así que hereda esa garantía.
+        trigger=CronTrigger(day_of_week="fri", hour=21, minute=45, timezone=TIMEZONE),
         id="calibration_report",
-        name="Weekly calibration report (Sun 10:00 CET)",
+        name="Weekly calibration report (Fri 21:45 CET)",
         misfire_grace_time=3600,
     )
 

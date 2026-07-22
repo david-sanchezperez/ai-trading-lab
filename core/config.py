@@ -56,8 +56,7 @@ MARKET_CALENDAR = "NYSE"     # para pandas-market-calendars
 # ---------------------------------------------------------------------------
 
 # SEC EDGAR requiere identificación para sus APIs (Fair Access Policy).
-# edgartools la usa en cada solicitud. Se carga desde variable de entorno
-# para no hardcodear un email personal en el repo público.
+# edgartools la usa en cada solicitud. Cambia si el email del proyecto cambia.
 EDGAR_IDENTITY = os.environ.get("EDGAR_IDENTITY", "your-email@example.com")
 
 # ---------------------------------------------------------------------------

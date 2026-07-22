@@ -765,9 +765,34 @@ def _execute_ibkr(state: TradingState) -> dict:
         cash = broker.get_cash()
         portfolio_value = broker.get_portfolio_value()
 
-        if action == "SELL" and ticker not in positions:
+        if action == "SELL" and positions.get(ticker, {}).get("quantity", 0) <= 0:
             trade_result = {"status": "skipped", "reason": "No position to sell"}
             action = "HOLD"
+
+        # Cubrir corto involuntario antes de nada: si hay una posición corta
+        # (originada por un bug de bracket u otra causa), una señal BUY debe
+        # cerrarla con una orden de mercado simple, no abrir un bracket largo
+        # nuevo — la lógica de exposición/cap de abajo asume posiciones largas
+        # y calcularía mal el "room" disponible con quantity negativa.
+        if action == "BUY" and positions.get(ticker, {}).get("quantity", 0) < 0:
+            cover_qty = abs(positions[ticker]["quantity"])
+            trade_result = broker.place_order(ticker, "BUY", cover_qty, price)
+            if trade_result.get("status") in ("filled", "submitted"):
+                from core import entry_tracker
+                entry_tracker.remove_entry(ticker)
+            portfolio_summary = {
+                "cash":        broker.get_cash(),
+                "positions":   broker.get_positions(),
+                "total_value": broker.get_portfolio_value(),
+            }
+            return {
+                "execution_result": {
+                    "status": "executed", "action": "COVER",
+                    "trade": trade_result, "portfolio": portfolio_summary,
+                },
+                "portfolio": portfolio_summary,
+                "portfolio_sim": state.get("portfolio_sim"),
+            }
 
         # Evitar órdenes BUY duplicadas: si ya hay una orden GTC BUY activa en IBKR
         # para este ticker, no colocar otra. Usa open orders live (no local_state,

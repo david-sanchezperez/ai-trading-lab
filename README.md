@@ -40,7 +40,7 @@ No paid APIs at runtime. Everything local.
 20:30 CET  — daily_run:          full analysis (21 tickers) + Telegram summary
 21:15 CET  — trailing_stop:      dynamic stops + take profits (ATR-based)
 21:30 CET  — outcome_resolution: resolve T+1/T+5/T+20 in prediction ledger
-Sun 10:00  — calibration_report: weekly calibration report
+Fri 21:45  — calibration_report: weekly calibration report
 
 Per ticker (during daily_run):
   data_node        → OHLCV from local CSV (1 year)

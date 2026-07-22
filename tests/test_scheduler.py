@@ -74,7 +74,7 @@ def test_daily_report_generated(tmp_path):
 
     with (
         patch("scheduler.jobs.daily_run._is_market_open_today", return_value=True),
-        patch("scheduler.jobs.daily_run._is_gateway_up", return_value=True),
+        patch("scheduler.jobs.daily_run._wait_for_gateway_ready", return_value=True),
         patch("scripts.analyze_all.main"),
         patch("scheduler.jobs.daily_run._save_daily_report", side_effect=fake_save),
         patch("notifications.telegram_notifier.send_notification"),
@@ -95,12 +95,12 @@ def test_daily_report_generated(tmp_path):
 
 
 def test_gateway_check():
-    """Verifica que _is_gateway_up detecta correctamente gateway caído vs activo."""
-    from scheduler.jobs.daily_run import _is_gateway_up
+    """Verifica que _is_port_open detecta correctamente puerto cerrado vs activo."""
+    from scheduler.jobs.daily_run import _is_port_open
 
-    assert _is_gateway_up("127.0.0.1", 1) is False, "Puerto 1 debería estar cerrado"
+    assert _is_port_open("127.0.0.1", 1) is False, "Puerto 1 debería estar cerrado"
 
-    gateway_up = _is_gateway_up("127.0.0.1", 4002)
+    gateway_up = _is_port_open("127.0.0.1", 4002)
     print(f"\nGateway en 4002: {'UP' if gateway_up else 'DOWN'}")
 
 

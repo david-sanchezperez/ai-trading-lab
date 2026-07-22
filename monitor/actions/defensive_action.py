@@ -37,6 +37,18 @@ class DefensiveAction:
         qty       = position.get("quantity", 0)
         avg_cost  = position.get("avg_price", 0.0)
 
+        # Esta clase asume posiciones largas (stop/tighten/close de un long).
+        # Una posición corta (quantity<=0, p.ej. originada por un bug de
+        # bracket) no debe pasar por aquí: un CLOSE_NOW ejecutaría
+        # place_order(ticker, "SELL", qty, ...) con qty ya negativo,
+        # profundizando el corto en vez de cerrarlo.
+        if qty <= 0:
+            log.warning(
+                f"[defensive] {ticker}: posición no larga (qty={qty}) — "
+                "fuera del alcance de esta acción, no se gestiona aquí"
+            )
+            return "MONITORING"
+
         # Precio actual
         current_price = broker.get_price(ticker) or avg_cost
         pnl_pct       = (current_price - avg_cost) / avg_cost * 100 if avg_cost > 0 else 0.0
