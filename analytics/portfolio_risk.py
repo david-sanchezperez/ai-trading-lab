@@ -13,7 +13,6 @@ projected_beta_after_entry():
 
 import logging
 from dataclasses import dataclass, field
-from typing import Optional
 
 import pandas as pd
 import yfinance as yf
@@ -238,15 +237,3 @@ class PortfolioRiskMonitor:
         except Exception as e:
             log.warning(f"[risk] Error descargando retornos: {e}")
             return pd.DataFrame()
-
-
-# ── Singleton ─────────────────────────────────────────────────────────────────
-
-_risk_monitor_instance: Optional[PortfolioRiskMonitor] = None
-
-
-def get_risk_monitor() -> PortfolioRiskMonitor:
-    global _risk_monitor_instance
-    if _risk_monitor_instance is None:
-        _risk_monitor_instance = PortfolioRiskMonitor()
-    return _risk_monitor_instance

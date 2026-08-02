@@ -171,16 +171,17 @@ def run() -> dict:
     risk_report_str = ""
     risk_warnings   = []
     try:
-        from analytics.portfolio_risk import get_risk_monitor
+        from analytics.portfolio_risk import PortfolioRiskMonitor
         from brokers import get_broker
         _broker = get_broker()
         _broker.connect()
         positions = _broker.get_positions()
         _broker.disconnect()
         if positions:
-            risk  = get_risk_monitor().compute_daily_risk(positions)
+            risk_monitor = PortfolioRiskMonitor()
+            risk  = risk_monitor.compute_daily_risk(positions)
             risk_warnings = risk.warnings
-            risk_report_str = get_risk_monitor().format_for_report(risk)
+            risk_report_str = risk_monitor.format_for_report(risk)
             if risk_warnings:
                 from notifications.telegram_notifier import notify_critical_error
                 notify_critical_error(

@@ -840,8 +840,8 @@ def _execute_ibkr(state: TradingState) -> dict:
         # Se pasa portfolio_value para que el denominador incluya cash, no solo posiciones.
         if action == "BUY":
             try:
-                from analytics.portfolio_risk import get_risk_monitor
-                proj_beta = get_risk_monitor().projected_beta_after_entry(
+                from analytics.portfolio_risk import PortfolioRiskMonitor
+                proj_beta = PortfolioRiskMonitor().projected_beta_after_entry(
                     ticker, quantity, positions, new_price=price,
                     portfolio_value=portfolio_value,
                 )

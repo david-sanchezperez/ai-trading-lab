@@ -268,8 +268,8 @@ class MarketMonitor:
             # Beta del portfolio
             beta_str = ""
             try:
-                from analytics.portfolio_risk import get_risk_monitor
-                risk     = get_risk_monitor().compute_daily_risk(positions)
+                from analytics.portfolio_risk import PortfolioRiskMonitor
+                risk     = PortfolioRiskMonitor().compute_daily_risk(positions)
                 beta_str = f"\nBeta portfolio: {risk.portfolio_beta:.2f}"
             except Exception:
                 pass
