@@ -1,4 +1,5 @@
 import csv
+import statistics
 
 from core.config import PROJECT_ROOT
 
@@ -40,4 +41,4 @@ def get_recent_sentiment(ticker, n=5):
 
     recent = sentiments[-n:]
 
-    return sum(recent) / len(recent)
+    return statistics.mean(recent)
