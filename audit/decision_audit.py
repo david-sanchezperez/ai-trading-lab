@@ -164,13 +164,6 @@ def _build_record(
             "signal_price":    tech.get("price"),
             "ledger_join_key": f"{ticker}_{now_local:%Y%m%d}",
         },
-
-        # Veredictos de los jueces (bloque preparado para Juez 1 y 3 futuros).
-        # schema_version se mantiene en 1: cambio puramente aditivo (D10).
-        # Registros anteriores sin "judges" siguen siendo legibles (I6).
-        "judges": {
-            "contradiction": critic.get("contradiction_judge"),
-        },
     }
 
 

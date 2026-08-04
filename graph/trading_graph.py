@@ -190,16 +190,6 @@ def critic_node(state: TradingState) -> dict:
     price = technical.get("price", "N/A")
     sentiment_score = sentiment.get("sentiment", 0)
 
-    # ── Juez de Contradicción (antes del fast path → audita todo, incl. fast-path) ──
-    from config.tribunal_config import CONTRADICTION_JUDGE_MODE, ContradictionJudgeMode
-    _judge_block = None
-    if CONTRADICTION_JUDGE_MODE != ContradictionJudgeMode.OFF:
-        try:
-            from graph.contradiction_adapter import run_contradiction_judge
-            _judge_block = run_contradiction_judge(state)
-        except Exception as _exc:
-            _judge_block = {"error": f"{type(_exc).__name__}: {_exc}"}
-
     # ── Fast path: skip DeepSeek cuando el Critic no puede cambiar el resultado ─
     # Condición 0 — SELL sin posición abierta: la ejecución lo ignoraría de todas formas
     # Condición 1 — señal muy fuerte: incluso con penalización del Critic (×0.85) y el
@@ -242,7 +232,6 @@ def critic_node(state: TradingState) -> dict:
             "scenario":            None,
             "key_question":        None,
             "error":               False,
-            "contradiction_judge": _judge_block,
         }
         logger = get_session_logger()
         if logger:
@@ -370,12 +359,6 @@ def critic_node(state: TradingState) -> dict:
         scenario = "Aligned signals — verify coherence"
         key_question = "Are all indicators pointing in the same direction?"
 
-    # ── Modo ACTIVE: el juez selecciona scenario/key_question por priority ───
-    if (CONTRADICTION_JUDGE_MODE == ContradictionJudgeMode.ACTIVE
-            and _judge_block and not _judge_block.get("error")):
-        from graph.contradiction_adapter import scenario_from_verdict
-        scenario, key_question = scenario_from_verdict(_judge_block)
-
     prompt = f"""You are a critical analyst reviewing a trading signal.
 
 Scenario detected: {scenario}
@@ -447,7 +430,6 @@ Analyze:
             "scenario":            scenario,
             "key_question":        key_question,
             "error":               False,
-            "contradiction_judge": _judge_block,
         }
 
     except (
@@ -472,7 +454,6 @@ Analyze:
             "scenario":            scenario,
             "key_question":        key_question,
             "error":               True,
-            "contradiction_judge": _judge_block,
         }
 
     logger = get_session_logger()
