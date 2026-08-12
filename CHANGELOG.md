@@ -2,6 +2,23 @@
 
 ---
 
+## [Unreleased]
+
+### Fixes en el mirror público
+
+- `requirements.txt` — añadido `duckdb==1.5.5` (faltaba pese a ser dependencia
+  directa de `analytics/prediction_ledger.py` y `audit/counterfactual.py`;
+  `pip install -r requirements.txt` seguido de cualquier import de esos
+  módulos, o de `pytest`, fallaba con `ModuleNotFoundError: No module named 'duckdb'`)
+- `.envrc.example` — añadido (faltaba en el mirror; el comando
+  `cp .envrc.example .envrc` del quick start del README fallaba)
+- `README.md` / `README.es.md` — sección "Ticker universe" actualizada al
+  universo real de `core/data_loader.py` (VST, COST, APP, AXON, PANW en vez
+  de NEE/RXRX/CRSP/BEAM/WOLF, ya retirados; `US10Y` en vez de `^TNX`; 4 tesis
+  en vez de 5, `biotech_ai` ya no está en uso)
+
+---
+
 ## [0.13.0] - 2026-05-25
 
 ### Sprint 13 — Nuevas señales + hardening del sistema

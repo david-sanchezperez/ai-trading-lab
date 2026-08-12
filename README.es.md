@@ -65,12 +65,12 @@ Acciones defensivas (stop tighten / close) y oportunistas via Qwen3.6.
 
 21 tickers operables + 4 de contexto:
 
-- **Core** — AMD, AVGO, ASML, TSM, MRVL, ANET, VRT, CEG, META, ORCL
-- **Stabilizer** — VEEV, NEE, ISRG
-- **Exploration** — CRWV, COHR, MU, CRM, RXRX, CRSP, BEAM, WOLF
-- **Context** (régimen macro, no operables) — QQQ, SPY, ^VIX, ^TNX
+- **Core** — AMD, AVGO, ASML, TSM, MRVL, ANET, VRT, CEG, VST, META, ORCL
+- **Stabilizer** — VEEV, ISRG, COST
+- **Exploration** — CRWV, COHR, MU, CRM, APP, AXON, PANW
+- **Context** (régimen macro, no operables) — QQQ, SPY, VIX, US10Y
 
-5 tesis: silicon · infra_ai · platforms · biotech_ai · stabilizer
+4 tesis: silicon · infra_ai · platforms · stabilizer
 
 ---
 
